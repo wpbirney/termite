@@ -30,7 +30,7 @@ ifeq (${CXX}, clang++)
 endif
 
 LDFLAGS := -s -Wl,--as-needed ${LDFLAGS}
-LDLIBS := ${shell pkg-config --libs ${GTK} ${VTE}}
+LDLIBS := -L. -lvte-ng ${shell pkg-config --libs ${GTK} ${VTE}}
 
 termite: termite.cc url_regex.hh util/clamp.hh util/maybe.hh util/memory.hh
 	${CXX} ${CXXFLAGS} ${LDFLAGS} $< ${LDLIBS} -o $@
